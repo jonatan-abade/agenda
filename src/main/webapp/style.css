@@ -3,18 +3,6 @@
 
 body{
 	font-family: 'Nunito', sans-serif;
-	font-size: 1em;
+	font-size: 1em !important;
 	font-weight: 400;
-}
-
-h1 {
-	color: #66bbff;
-}
-
-.btn{
-	padding: 5px 10px;
-	border-radius: 5px;
-	background-color: #66bbff;
-	color: white;
-	text-decoration: none;
 }

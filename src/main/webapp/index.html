@@ -5,10 +5,22 @@
 <title>Agenda de contatos</title>
 <link rel="icon" href="images/favicon.png">
 <link rel="stylesheet" href="style.css">
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+	rel="stylesheet">
+
 </head>
 <body>
-	<img alt="" src="images/agenda.png"">
-	<h1>Agenda de contatos</h1>
-	<a href="dashboard" class="btn">Acessar</a>
+	<div class="lg:container m-auto relative h-screen">
+		<div class="absolute absolute top-1/2 left-1/2 transform ">
+			<div class="grid grid-cols-2">
+				<img alt="" src="images/agenda.png" class="w-24">
+				<div>
+					<h1>Agenda de contatos</h1>
+					<a href="dashboard"
+						class="py-3 px-5 rounded bg-blue-500 text-white shadow-sm">Acessar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
