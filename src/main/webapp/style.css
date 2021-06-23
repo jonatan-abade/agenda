@@ -1,0 +1,20 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+body{
+	font-family: 'Nunito', sans-serif;
+	font-size: 1em;
+	font-weight: 400;
+}
+
+h1 {
+	color: #66bbff;
+}
+
+.btn{
+	padding: 5px 10px;
+	border-radius: 5px;
+	background-color: #66bbff;
+	color: white;
+	text-decoration: none;
+}
