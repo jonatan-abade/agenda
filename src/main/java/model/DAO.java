@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class DAO {
 	/** Módulo de conexão **/
@@ -26,11 +27,16 @@ public class DAO {
 		}
 	}
 
-	// Teste de conexão
-	public void testeCon() {
+	//Create
+	public void create(JavaBeans contato) {
+		String insert = "Insert into contatos (nome, fone, email) values (?, ?, ?)";
 		try {
 			Connection con = conectar();
-			System.out.println(con);
+			PreparedStatement pst = con.prepareStatement(insert);
+			pst.setString(1, contato.getNome());
+			pst.setString(2, contato.getFone());
+			pst.setString(3, contato.getEmail());
+			pst.executeUpdate();
 			con.close();
 		} catch (Exception e) {
 			System.out.println(e);

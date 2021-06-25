@@ -7,29 +7,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DAO;
-/**
- * Servlet implementation class Controller
- */
-@WebServlet(urlPatterns = {"/Controller", "/dashboard"})
+import model.JavaBeans;
+
+@WebServlet(urlPatterns = { "/Controller", "/dashboard", "/store" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    DAO dao = new DAO();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Controller() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	DAO dao = new DAO();
+	JavaBeans contato = new JavaBeans();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//teste de conexão
-		dao.testeCon();
+	public Controller() {
+		super();
+
 	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getServletPath();
+		if (action.equals("/dashboard")) {
+			contatos(request, response);
+			return;
+		} else if (action.equals("/store")) {
+			storeContato(request, response);
+			return;
+		} else {
+			response.sendRedirect("index.html");
+		}
+	}
+
+	protected void contatos(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.sendRedirect("agenda.jsp");
+	}
+
+	protected void storeContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		contato.setNome(request.getParameter("nome"));
+		contato.setFone(request.getParameter("fone"));
+		contato.setEmail(request.getParameter("email"));
+		// Inserindo contato
+		dao.create(contato);
+		response.sendRedirect("dashboard");
+	}
 }
