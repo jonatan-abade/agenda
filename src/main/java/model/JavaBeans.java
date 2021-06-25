@@ -1,48 +1,54 @@
 package model;
 
 public class JavaBeans {
-	private String id;
-	private String nome;
-	private String fone;
+	private Integer id;
+	private String name;
+	private String phone;
 	private String email;
-	
+
 	public JavaBeans() {
 		super();
-		
-	}
-	
-	public JavaBeans(String id, String nome, String fone, String email) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.fone = fone;
-		this.email = email; 
+
 	}
 
-	public String getId() {
+	public JavaBeans(Integer id, String name, String phone, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+	}
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getFone() {
-		return fone;
+
+	public String getPhone() {
+		return phone;
 	}
-	public void setFone(String fone) {
-		this.fone = fone;
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
 }
