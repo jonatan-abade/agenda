@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.DAO;
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/dashboard", "/store", "/contact", "/update", "/delete" })
+@WebServlet(urlPatterns = { "/Controller", "/agenda", "/store", "/edit", "/update", "/delete" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
@@ -20,20 +20,19 @@ public class Controller extends HttpServlet {
 
 	public Controller() {
 		super();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
-		if (action.equals("/dashboard")) {
+		if (action.equals("/agenda")) {
 			contacts(request, response);
 			return;
 		} else if (action.equals("/store")) {
 			store(request, response);
 			return;
-		} else if (action.equals("/contact")) {
-			editContato(request, response);
+		} else if (action.equals("/edit")) {
+			edit(request, response);
 			return;
 		} else if (action.equals("/update")) {
 			update(request, response);
@@ -51,7 +50,7 @@ public class Controller extends HttpServlet {
 		// Cirando um obejto que ira receber os dados javabeans
 		ArrayList<JavaBeans> list = dao.getAll();
 		request.setAttribute("contacts", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/schedule.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/contact/index.jsp");
 		rd.forward(request, response);
 	}
 
@@ -62,11 +61,10 @@ public class Controller extends HttpServlet {
 		contact.setEmail(request.getParameter("email"));
 		// Inserindo contato
 		dao.create(contact);
-		response.sendRedirect("dashboard");
+		response.sendRedirect("agenda");
 	}
 
-	protected void editContato(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		contact.setId(Integer.parseInt(id));
 		dao.getContact(contact);
@@ -74,7 +72,7 @@ public class Controller extends HttpServlet {
 		request.setAttribute("name", contact.getName());
 		request.setAttribute("phone", contact.getPhone());
 		request.setAttribute("email", contact.getEmail());
-		RequestDispatcher rd = request.getRequestDispatcher("contactEdit.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("contact/edit.jsp");
 		rd.forward(request, response);
 	}
 
@@ -85,7 +83,7 @@ public class Controller extends HttpServlet {
 		contact.setPhone(request.getParameter("phone"));
 		contact.setEmail(request.getParameter("email"));
 		dao.update(contact);
-		response.sendRedirect("dashboard");
+		response.sendRedirect("agenda");
 	}
 
 	protected void destroy(HttpServletRequest request, HttpServletResponse response)
@@ -93,6 +91,6 @@ public class Controller extends HttpServlet {
 		String id = request.getParameter("id");
 		contact.setId(Integer.parseInt(id));
 		dao.delete(contact);
-		response.sendRedirect("dashboard");
+		response.sendRedirect("agenda");
 	}
 }

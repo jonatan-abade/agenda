@@ -6,7 +6,7 @@
 	<img alt="" src="images/agenda.png">
 	<div>
 		<h1 class="text-4xl">Bem-vindo(a) ao SAC</h1>
-		<a href="dashboard" class="btn btn-primary text-white">Acessar</a>
+		<a href="agenda" class="btn btn-primary text-white">Acessar</a>
 	</div>
 </div>
 
