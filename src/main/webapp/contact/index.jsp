@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="model.JavaBeans"%>
+<%@ page import="beans.ContactBean"%>
 <%@ page import="java.util.ArrayList"%>
 <%
-ArrayList<JavaBeans> list = (ArrayList<JavaBeans>) request.getAttribute("contacts");
+ArrayList<ContactBean> list = (ArrayList<ContactBean>) request.getAttribute("contacts");
 %>
 <%@include file="../includes/header.html"%>
 	<div class="container">

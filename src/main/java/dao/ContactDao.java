@@ -1,4 +1,4 @@
-package model;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,16 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class DAO {
+import beans.ContactBean;
+
+public class ContactDao {
 	/** Módulo de conexão **/
 	// Parâmetros de conexão
 	private String driver = "org.postgresql.Driver";
 	// private String url =
-	// "jdbc:postgresql://127.0.0.1/dbagenda?userTimezone=true&sereverTimezone=UTC";
-	private String url = "jdbc:postgresql://127.0.0.1:5433/dbagenda?userTimezone=true&sereverTimezone=UTC";
+	private String url = "jdbc:postgresql://127.0.0.1:5432/dbagenda?userTimezone=true&sereverTimezone=UTC";
 
 	private String user = "postgres";
-	private String password = "postgres";
+	private String password = "123456";
 
 	// Método de conexão
 	private Connection conect() {
@@ -32,7 +33,7 @@ public class DAO {
 	}
 
 	// Create
-	public void create(JavaBeans contact) {
+	public void create(ContactBean contact) {
 		String insert = "Insert into contacts (name, phone, email) values (?, ?, ?)";
 		try {
 			Connection con = conect();
@@ -48,8 +49,8 @@ public class DAO {
 	}
 
 	// Get all
-	public ArrayList<JavaBeans> getAll() {
-		ArrayList<JavaBeans> contacts = new ArrayList<>();
+	public ArrayList<ContactBean> getAll() {
+		ArrayList<ContactBean> contacts = new ArrayList<>();
 		String selectAll = "select * from contacts order by name";
 		try {
 			Connection con = conect();
@@ -60,7 +61,7 @@ public class DAO {
 				String name = rs.getString(2);
 				String phone = rs.getString(3);
 				String email = rs.getString(4);
-				contacts.add(new JavaBeans(id, name, phone, email));
+				contacts.add(new ContactBean(id, name, phone, email));
 			}
 			con.close();
 			return contacts;
@@ -70,7 +71,7 @@ public class DAO {
 		}
 	}
 
-	public void getContact(JavaBeans contact) {
+	public void getContact(ContactBean contact) {
 		String getContactQuery = "select * from contacts where id = ?";
 		try {
 			Connection con = conect();
@@ -89,7 +90,7 @@ public class DAO {
 		}
 	}
 
-	public void update(JavaBeans contact) {
+	public void update(ContactBean contact) {
 		String sql = "update contacts set name=?, phone=?, email=? where id = ?";
 		try {
 			Connection con = conect();
@@ -105,7 +106,7 @@ public class DAO {
 		}
 	}
 
-	public void delete(JavaBeans contact) {
+	public void delete(ContactBean contact) {
 		String sql = "delete from contacts where id = ?";
 		try {
 			Connection con = conect();

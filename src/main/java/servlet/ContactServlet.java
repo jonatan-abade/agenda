@@ -1,4 +1,4 @@
-package controller;
+package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,16 +9,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.DAO;
-import model.JavaBeans;
+
+import beans.ContactBean;
+import dao.ContactDao;
 
 @WebServlet(urlPatterns = { "/Controller", "/agenda", "/store", "/edit", "/update", "/delete" })
-public class Controller extends HttpServlet {
+public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	DAO dao = new DAO();
-	JavaBeans contact = new JavaBeans();
+	ContactDao dao = new ContactDao();
+	ContactBean contact = new ContactBean();
 
-	public Controller() {
+	public ContactServlet() {
 		super();
 	}
 
@@ -48,7 +49,7 @@ public class Controller extends HttpServlet {
 	protected void contacts(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Cirando um obejto que ira receber os dados javabeans
-		ArrayList<JavaBeans> list = dao.getAll();
+		ArrayList<ContactBean> list = dao.getAll();
 		request.setAttribute("contacts", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/contact/index.jsp");
 		rd.forward(request, response);

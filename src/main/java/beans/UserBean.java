@@ -1,22 +1,17 @@
-package model;
+package beans;
 
-public class JavaBeans {
+public class UserBean {
 	private Integer id;
 	private String name;
-	private String phone;
 	private String email;
+	private String password;
 
-	public JavaBeans() {
-		super();
-
-	}
-
-	public JavaBeans(Integer id, String name, String phone, String email) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.phone = phone;
-		this.email = email;
+	public boolean login(String email, String password) {
+		if (this.email.equals("admin@admin.com") && this.email.equals("admin123")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public Integer getId() {
@@ -35,20 +30,20 @@ public class JavaBeans {
 		this.name = name;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
