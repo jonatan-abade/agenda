@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import beans.ContactBean;
 import dao.ContactDao;
 
-@WebServlet(urlPatterns = { "/Controller", "/agenda", "/store", "/edit", "/update", "/delete" })
+@WebServlet(urlPatterns = {"/contacts", "/store", "/edit", "/update", "/delete" })
 public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ContactDao dao = new ContactDao();
@@ -26,7 +26,7 @@ public class ContactServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
-		if (action.equals("/agenda")) {
+		if (action.equals("/contacts")) {
 			contacts(request, response);
 			return;
 		} else if (action.equals("/store")) {
