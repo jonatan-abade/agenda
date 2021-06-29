@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@include file="../includes/header.html"%>
+<%@include file="../includes/header.jsp"%>
 
 <div class="container">
 	<h1>Editar contato</h1>
@@ -26,4 +26,4 @@
 
 </div>
 
-<%@include file="../includes/footer.html"%>
+<%@include file="../includes/footer.jsp"%>

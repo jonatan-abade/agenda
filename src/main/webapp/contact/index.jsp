@@ -5,9 +5,9 @@
 <%
 ArrayList<ContactBean> list = (ArrayList<ContactBean>) request.getAttribute("contacts");
 %>
-<%@include file="../includes/header.html"%>
+<%@include file="../includes/header.jsp"%>
 	<div class="container">
-		<h1>Agenda de contatos</h1>
+		<h1>Contatos</h1>
 		<a href="contact/create.jsp" class="btn btn-primary">Novo contato</a>
 
 		<table class="table table-hover">
@@ -37,4 +37,4 @@ ArrayList<ContactBean> list = (ArrayList<ContactBean>) request.getAttribute("con
 		</table>
 	</div>
 
-<%@include file="../includes/footer.html"%>
+<%@include file="../includes/footer.jsp"%>

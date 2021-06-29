@@ -1,4 +1,4 @@
-<%@include file="../includes/header.html"%>
+<%@include file="../includes/header.jsp"%>
 
 <div class="container">
 	<h1>Criar novo contato</h1>
@@ -19,4 +19,4 @@
 
 </div>
 
-<%@include file="../includes/footer.html"%>
+<%@include file="../includes/footer.jsp"%>

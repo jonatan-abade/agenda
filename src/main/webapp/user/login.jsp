@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@include file="/includes/header.html"%>
+<%@include file="/includes/header.jsp"%>
 
 <div class="container">
 	Nome: ${param.name}
@@ -8,4 +6,4 @@
 	
 </div>
 
-<%@include file="/includes/footer.html"%>
+<%@include file="/includes/footer.jsp"%>
