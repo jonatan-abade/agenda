@@ -14,14 +14,6 @@ public class UserBean {
 		this.password = password;
 	}
 
-	public boolean login(String email, String password) {
-		if (this.email.equals("admin@admin.com") && this.email.equals("admin123")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public Integer getId() {
 		return id;
 	}

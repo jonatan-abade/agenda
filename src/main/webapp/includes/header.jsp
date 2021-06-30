@@ -1,5 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%
+String nameUser = (String)session.getAttribute("nameUser"); 
+if(nameUser == null){
+	response.sendRedirect("index.jsp");
+}
+%>
+
 <!DOCTYPE html>
 <html lang="pt=br">
 <head>
@@ -28,9 +35,7 @@
 					<li class="nav-item"><a class="nav-link" href="/Agenda/todo">A fazer</a></li>
 					<li class="nav-item"><a class="nav-link" href="/Agenda/users">Usuários</a></li>
 				</ul>
-				<span class="navbar-text">
-					<p></p>
-				</span>
+				<span class="navbar-text">Seja bem-vindo <b>${nameUser}</b> <a href="/Agenda/logout">Sair</a></span>
 			</div>
 		</div>
 	</nav>

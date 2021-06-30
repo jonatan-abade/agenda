@@ -73,4 +73,24 @@ public class UserDao extends SingleConnection {
 		}
 	}
 
+	public UserBean getUserByEmail(String emailParam) {
+		try {
+			String sql = "select * from users where email = ? LIMIT 1";
+			PreparedStatement pst = connection.prepareStatement(sql);
+			pst.setString(1, emailParam);
+			ResultSet rs = pst.executeQuery();
+			UserBean user = new UserBean(null, null, null, null);
+			while (rs.next()) {
+				user.setId(rs.getInt(1));
+				user.setName(rs.getString(2));
+				user.setEmail(rs.getString(3));
+			}
+			return user;
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+
+	}
+
 }
