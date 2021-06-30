@@ -93,4 +93,46 @@ public class UserDao extends SingleConnection {
 
 	}
 
+	public void getUser(UserBean user) {
+		String sql = "select * from users where id = ?";
+		try {
+			PreparedStatement pst = connection.prepareStatement(sql);
+			pst.setInt(1, user.getId());
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				user.setId(rs.getInt(1));
+				user.setName(rs.getString(2));
+				user.setEmail(rs.getString(3));
+				user.setPassword(rs.getString(4));
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	public void update(UserBean user) {
+		try {
+			String sql = "update users set name=?, email=?, password=? where id = ?";
+			PreparedStatement pst = connection.prepareStatement(sql);
+			pst.setString(1, user.getName());
+			pst.setString(2, user.getEmail());
+			pst.setString(3, user.getPassword());
+			pst.setInt(4, user.getId());
+			pst.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e);
+
+		}
+	}
+
+	public void delete(UserBean user) {
+		String sql = "delete from users where id = ?";
+		try {
+			PreparedStatement pst = connection.prepareStatement(sql);
+			pst.setInt(1, user.getId());
+			pst.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 }

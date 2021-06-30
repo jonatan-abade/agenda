@@ -30,8 +30,8 @@ ArrayList<UserBean> list = (ArrayList<UserBean>) request.getAttribute("users");
 						<td><%=list.get(i).getName()%></td>
 						<td><%=list.get(i).getEmail()%></td>
 						<td>
-							<a href="edit?id=<%= list.get(i).getId() %>" class="btn btn-warning">Editar</a>
-							<a href="delete?id=<%= list.get(i).getId() %>" class="btn btn-danger">Excluir</a>
+							<a href="/Agenda/editUser?id=<%= list.get(i).getId() %>" class="btn btn-warning">Editar</a>
+							<a href="/Agenda/deleteUser?id=<%= list.get(i).getId() %>" class="btn btn-danger">Excluir</a>
 						</td>
 					</tr>
 				<% }

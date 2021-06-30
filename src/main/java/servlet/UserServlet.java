@@ -14,10 +14,11 @@ import javax.servlet.http.HttpSession;
 import beans.UserBean;
 import dao.UserDao;
 
-@WebServlet(urlPatterns = { "/login", "/logout", "/users", "/addUser" })
+@WebServlet(urlPatterns = { "/login", "/logout", "/users", "/addUser", "/editUser", "/updateUser", "/deleteUser" })
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserDao user = new UserDao();
+	UserBean userBean = new UserBean(null, null, null, null);
 
 	public UserServlet() {
 		super();
@@ -37,6 +38,15 @@ public class UserServlet extends HttpServlet {
 			return;
 		} else if (action.equals("/addUser")) {
 			store(request, response);
+			return;
+		} else if (action.equals("/editUser")) {
+			edit(request, response);
+			return;
+		} else if (action.equals("/updateUser")) {
+			update(request, response);
+			return;
+		} else if (action.equals("/deleteUser")) {
+			destroy(request, response);
 			return;
 		} else {
 			response.sendRedirect("index.jsp");
@@ -85,6 +95,37 @@ public class UserServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		UserBean userBean = new UserBean(null, name, email, password);
 		user.create(userBean);
+		response.sendRedirect("users");
+	}
+
+	protected void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		userBean.setId(Integer.parseInt(id));
+		user.getUser(userBean);
+		request.setAttribute("id", userBean.getId());
+		request.setAttribute("name", userBean.getName());
+		request.setAttribute("email", userBean.getEmail());
+		request.setAttribute("password", userBean.getPassword());
+		RequestDispatcher rd = request.getRequestDispatcher("users/edit.jsp");
+		rd.forward(request, response);
+	}
+
+	protected void update(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		userBean.setId(Integer.parseInt(request.getParameter("id")));
+		userBean.setName(request.getParameter("name"));
+		userBean.setEmail(request.getParameter("email"));
+		userBean.setPassword(request.getParameter("passoword"));
+		user.update(userBean);
+		response.sendRedirect("users");
+	}
+
+	protected void destroy(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String id = request.getParameter("id");
+		userBean.setId(Integer.parseInt(id));
+		user.delete(userBean);
 		response.sendRedirect("users");
 	}
 
