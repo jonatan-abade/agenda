@@ -32,9 +32,9 @@ public class ContactDao {
 	// Get all
 	public ArrayList<ContactBean> getAll() {
 		ArrayList<ContactBean> contacts = new ArrayList<>();
-		String selectAll = "select * from contacts order by name";
+		String sql = "select * from contacts order by name";
 		try {
-			PreparedStatement pst = connection.prepareStatement(selectAll);
+			PreparedStatement pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Integer id = rs.getInt(1);

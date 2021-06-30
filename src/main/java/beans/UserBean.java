@@ -6,6 +6,14 @@ public class UserBean {
 	private String email;
 	private String password;
 
+	public UserBean(Integer id, String name, String email, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+
 	public boolean login(String email, String password) {
 		if (this.email.equals("admin@admin.com") && this.email.equals("admin123")) {
 			return true;

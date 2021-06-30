@@ -6,9 +6,9 @@ import java.sql.DriverManager;
 public class SingleConnection {
 
 	private static String driver = "org.postgresql.Driver";
-	private static String url = "jdbc:postgresql://127.0.0.1:5433/dbagenda?userTimezone=true&sereverTimezone=UTC";
+	private static String url = "jdbc:postgresql://127.0.0.1:5432/dbagenda?userTimezone=true&sereverTimezone=UTC";
 	private static String user = "postgres";
-	private static String password = "postgres";
+	private static String password = "123456";
 	private static Connection connection = null;
 
 	static {

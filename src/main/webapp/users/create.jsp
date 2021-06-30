@@ -2,7 +2,7 @@
 
 <div class="container">
 	<h1>Criar novo usuário</h1>
-	<form name="formContato" action="addUser" class="shadow-sm p-10">
+	<form action="/Agenda/addUser" class="shadow-sm p-10" method="post">
 		<div>
 			<input type="text" name="name" placeholder="Nome" />
 		</div>
