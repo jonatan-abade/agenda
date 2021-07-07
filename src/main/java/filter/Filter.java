@@ -30,7 +30,6 @@ public class Filter implements javax.servlet.Filter {
 				e1.printStackTrace();
 			}
 		}
-
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {

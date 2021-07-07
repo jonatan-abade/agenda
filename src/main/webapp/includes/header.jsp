@@ -32,7 +32,7 @@ if(nameUser == null){
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link" href="/Agenda/contacts">Contatos</a></li>
-					<li class="nav-item"><a class="nav-link" href="/Agenda/todo">A fazer</a></li>
+					<li class="nav-item"><a class="nav-link" href="/Agenda/tasks">A fazer</a></li>
 					<li class="nav-item"><a class="nav-link" href="/Agenda/users">Usuários</a></li>
 				</ul>
 				<span class="navbar-text">Seja bem-vindo <b>${nameUser}</b> <a href="/Agenda/logout">Sair</a></span>

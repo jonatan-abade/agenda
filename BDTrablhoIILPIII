@@ -1,0 +1,262 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.16
+-- Dumped by pg_dump version 13.0
+
+-- Started on 2021-07-07 14:28:02
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+--
+-- TOC entry 197 (class 1259 OID 16625)
+-- Name: contacts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.contacts (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    phone character varying(20),
+    email character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.contacts OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 16623)
+-- Name: contatos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.contatos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.contatos_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2824 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: contatos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.contatos_id_seq OWNED BY public.contacts.id;
+
+
+--
+-- TOC entry 201 (class 1259 OID 24816)
+-- Name: tasks; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tasks (
+    id integer NOT NULL,
+    title character varying(250),
+    description text,
+    status character varying(50)
+);
+
+
+ALTER TABLE public.tasks OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 24814)
+-- Name: tasks_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tasks_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tasks_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2825 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: tasks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tasks_id_seq OWNED BY public.tasks.id;
+
+
+--
+-- TOC entry 199 (class 1259 OID 16641)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    email character varying(50) NOT NULL,
+    password character varying(64) NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 16639)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2826 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 2683 (class 2604 OID 16628)
+-- Name: contacts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.contacts ALTER COLUMN id SET DEFAULT nextval('public.contatos_id_seq'::regclass);
+
+
+--
+-- TOC entry 2685 (class 2604 OID 24819)
+-- Name: tasks id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_id_seq'::regclass);
+
+
+--
+-- TOC entry 2684 (class 2604 OID 16644)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 2814 (class 0 OID 16625)
+-- Dependencies: 197
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.contacts (id, name, phone, email) FROM stdin;
+2	jonatanzinho vitor	67 992917425	jowjow@gmail.vom
+13	gabriel abade	40028922	gabriel@gmail.com
+\.
+
+
+--
+-- TOC entry 2818 (class 0 OID 24816)
+-- Dependencies: 201
+-- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tasks (id, title, description, status) FROM stdin;
+2	corrigir trabalho	Corrigir bugs no trabalho	processando
+1	Tarefa de LPIII	Fazer um site com java\r\n\t\t\t\t  	aguardando
+\.
+
+
+--
+-- TOC entry 2816 (class 0 OID 16641)
+-- Dependencies: 199
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, name, email, password) FROM stdin;
+1	admin	admin@admin.com	123456
+4	jonatan	admin@admin	admin
+\.
+
+
+--
+-- TOC entry 2827 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: contatos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.contatos_id_seq', 15, true);
+
+
+--
+-- TOC entry 2828 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tasks_id_seq', 3, true);
+
+
+--
+-- TOC entry 2829 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 4, true);
+
+
+--
+-- TOC entry 2687 (class 2606 OID 16630)
+-- Name: contacts contatos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.contacts
+    ADD CONSTRAINT contatos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2691 (class 2606 OID 24824)
+-- Name: tasks tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tasks
+    ADD CONSTRAINT tasks_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2689 (class 2606 OID 16646)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2021-07-07 14:28:02
+
+--
+-- PostgreSQL database dump complete
+--
+
